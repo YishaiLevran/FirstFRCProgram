@@ -1,9 +1,12 @@
+import java.time.Month;
+
 public class Date {
     private int day;
     private int month;
     private int year;
 
-    public final int Max = 31,
+    public final int Max = 31, Min = 30,
+            FMax = 29, FMin = 28,
             Jan = 1, Feb = 2,
             Mar = 3, Apr = 4,
             May = 5, Jun = 6,
@@ -20,18 +23,27 @@ public class Date {
         this.month = m;
         this.year = y;
 
-        if (month == Jan || month == Mar || month == May || month == Jul || month == Aug || month == Oct || month == Dec && d == 31) {
+        if (m == Jan || m == Mar || m == May || m == Jul || m == Aug || m == Oct || m == Dec && d == Max) {
             return true;
-        } else if (month == Apr || month == Jun || month == Sep || month == Nov && d == 30) {
+        } else if (m == Apr || m == Jun || m == Sep || m == Nov && d == Min) {
             return true;
         } else if (isLeapYear(y) == true) {
-            if (month == Feb && d == 29) {
+            if (m == Feb && d == FMax) {
                 return true;
             }
-        } else if (month == Feb && isLeapYear(y) == false && d == 28) {
+        } else if (m == Feb && isLeapYear(y) == false && d == FMin) {
+            toString();
             return true;
+
         }
         return false;
+    }
+
+    public String toString(int d, int m, int y) {
+        this.month = m;
+        this.day = d;
+        this.year = y;
+return d+"/"+m+"/"+y;
     }
 }
 
