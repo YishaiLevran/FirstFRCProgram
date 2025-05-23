@@ -12,7 +12,7 @@ public class Weight {
         }
     }
     public String toString(){
-        return this.kg+" kg and "+this.grams+" gr.";
+        return this.kg+" kg and "+this.grams+" grams.";
     }
 
 }
